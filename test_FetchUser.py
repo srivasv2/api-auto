@@ -5,8 +5,6 @@ import pytest
 '''
 Test to validate get request for user data
 '''
-
-
 @pytest.mark.smoke
 def test_fetch_user_data():
     url = "https://reqres.in/api/users?page=2"
