@@ -1,3 +1,4 @@
+import requests
 import json
 import jsonpath
 import pytest
@@ -8,7 +9,7 @@ url = "https://reqres.in/api/users/"
 @pytest.fixture(scope="module")
 def start_exec():
     global req_json
-    file = open("../Fixtures/test.json")
+    file = open("./Fixtures/test.json")
     req_json = json.loads(file.read())
     yield
     file.close()
