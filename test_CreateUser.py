@@ -4,7 +4,7 @@ import jsonpath
 import pytest
 
 url = "https://reqres.in/api/users/"
-
+# Pytest fixture that runs once before each test in this module
 @pytest.fixture(scope="module")
 def start_exec():
     global req_json
@@ -13,6 +13,13 @@ def start_exec():
     yield
     file.close()
 
+'''
+Test creation of a new user
+Assertions: 
+1. Validate status code for user creation API call
+2. Validate user id value in the response in not None
+3. Validate user name of newly created user
+'''
 @pytest.mark.smoke
 @pytest.mark.regression
 def test_create_user(start_exec):

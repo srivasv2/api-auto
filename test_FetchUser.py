@@ -4,21 +4,19 @@ import pytest
 
 '''
 Test to validate get request for user data
+Assertions: 
+1. Validate status code for user details fetch API call
+2. Validate response time is below 200ms
+3. Response page attribute is equal to 2
 '''
 @pytest.mark.smoke
 def test_fetch_user_data():
     url = "https://reqres.in/api/users?page=2"
     res = requests.get(url)
-    print("Body of response:", res.content)
-    print("Headers of response:", res.headers)
-    print("Value for Date Header:", res.headers.get("Date"))
-    print("Value of Cookies:", res.cookies)
-    print("Value of encoding:", res.encoding)
     print("Value of elapsed time:", res.elapsed)
     # Validate Status code
-    print(res.status_code)
     assert res.status_code == 200
+    print(res.headers)
+    assert res.elapsed.seconds < 0.2
     json_res = json.loads(res.text)
-    print(json_res)
-    # Validate value of page field
     assert json_res['page'] == 2
