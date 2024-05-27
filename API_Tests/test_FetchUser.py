@@ -9,7 +9,7 @@ Assertions:
 2. Validate response time is below 200ms
 3. Response page attribute is equal to 2
 '''
-@pytest.mark.smoke
+@pytest.mark.api
 def test_fetch_user_data():
     url = "https://reqres.in/api/users?page=2"
     res = requests.get(url)

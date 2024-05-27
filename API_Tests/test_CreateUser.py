@@ -1,17 +1,8 @@
 import requests
-import json
 import jsonpath
 import pytest
 
 url = "https://reqres.in/api/users/"
-# Pytest fixture that runs once before each test in this module
-@pytest.fixture(scope="module")
-def start_exec():
-    global req_json
-    file = open("./Fixtures/test.json")
-    req_json = json.loads(file.read())
-    yield
-    file.close()
 
 '''
 Test creation of a new user
@@ -20,10 +11,9 @@ Assertions:
 2. Validate user id value in the response in not None
 3. Validate user name of newly created user
 '''
-@pytest.mark.smoke
-@pytest.mark.regression
+@pytest.mark.api
 def test_create_user(start_exec):
-    response = requests.post(url, req_json)
+    response = requests.post(url, start_exec)
     assert response.status_code == 201
     print(response.text)
     user_id = jsonpath.jsonpath(response.json(), 'id')
