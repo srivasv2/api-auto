@@ -1,7 +1,7 @@
 import pytest
 @pytest.mark.compare
 def test_greater():
-    num = 100
+    num = 101
     assert num > 100
 @pytest.mark.compare
 def test_greater_equal():
@@ -9,5 +9,5 @@ def test_greater_equal():
     assert num >= 100
 @pytest.mark.compare
 def test_less():
-    num = 100
+    num = 199
     assert num < 200
